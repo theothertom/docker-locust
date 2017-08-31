@@ -95,6 +95,8 @@ case $MODE in
     locust --master --web-port=8080 --host=${HOST} --locustfile=/locustfile.py
     ;;
     slave)
+    #We often start master/slave together, and if the slave starts first it gets stuck for a while
+    sleep 10
     locust --slave --master-host=${MASTER_HOST} --locustfile=/locustfile.py
     ;;
     *)

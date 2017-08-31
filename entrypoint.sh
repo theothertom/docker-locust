@@ -79,6 +79,14 @@ else
     cp /locust/locustfile.py .
 fi
 
+if [ -f /locust/pre-script.sh ]; then
+    sh /locust/pre-script.sh
+fi
+
+if [ -f /locust/background-script.sh ]; then
+    sh /locust/background-script.sh &
+fi
+
 echo "Using locustfile:"
 echo
 cat locustfile.py

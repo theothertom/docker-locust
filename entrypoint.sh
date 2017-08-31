@@ -73,7 +73,12 @@
 #LOCUSTFILE=http URL
 set -eou pipefail
 
-curl -o locustfile.py $LOCUSTFILE
+if [ ! -f /locust/locustfile.py ]; then
+    curl -o locustfile.py $LOCUSTFILE
+else
+    cp /locust/locustfile.py .
+fi
+
 echo "Using locustfile:"
 echo
 cat locustfile.py
